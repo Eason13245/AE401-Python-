@@ -9,6 +9,8 @@ Created on Tue Jun 16 18:46:30 2020
 
 score = []
 name = []
+Highestname = 0
+Lowname = 0
 H = 0
 S = 100
 T = 0
@@ -20,20 +22,57 @@ for a in range(N):
     s = int(input("The score of the student:"))
     name.append(n)
     score.append(s)
+    print(name)
+    print(score)
     
-for each_score in score:
-    if each_score > H:
-        H = each_score
-        
-for each_score in score:
-    if S > each_score:
-        S = each_score
-        
-for each_score in score:
-    T += each_score
+def Highest_score():
+    H = 0
+    for i in range(0,1*N):
+        if score[i] > H:
+            H = score[i] 
+    return H
 
-T = T/5
+H = Highest_score()
 
-print("Highest", H)
-print("Lowest", S)
-print("Total", T)
+def Highest_name():
+    H = 0
+    for i in range(0,1*N):
+        if score[i] > H:
+            H = score[i]
+            Highestname = name[i]
+    return Highestname
+        
+Highestname = Highest_name()
+
+def Lowest_score():
+    S = 100
+    for i in range(0,1*N):
+        if S > score[i]:
+            S = score[i]
+    return S
+
+S = Lowest_score
+
+def Lowest_name():
+    S = 100
+    for o in range(0,1*N):
+        if S > score[o]:
+            S = score[o]
+            Lowname = name[o]
+    return Lowname
+        
+Lowname = Lowest_name
+
+def Total():
+    T = 0
+    for i in range(0,1*N):
+        T += score[i]
+    T = T/N
+    return T
+
+T = Total()
+
+print("Highest", Highestname, H)
+print("Lowest", Lowname, S)
+print("Average", T)
+
