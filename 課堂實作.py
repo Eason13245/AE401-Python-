@@ -7,9 +7,7 @@ Created on Tue Jul  7 21:21:41 2020
 """
 
 
-file = open("Wonderland.txt","w")
-
-file.write('''d = {}
+d = {}
 print('########################')
 print('#Python英文字典#')
 print('########################')
@@ -31,10 +29,24 @@ while True:
                CVoc = input('輸入中文翻譯')
                d[Voc] = CVoc
            else:
-                print('已經有這個單字')       
+                print('已經有這個單字')     
+        if not os.path.isfile('Thedictionary.txt'):
+            fo = open('Thedictionary.txt','w')
+        else:
+            fo = open('Thedictionary.txt','a')
+        for k, v in d.itmes():
+            fo.write(k)
+            fo.write(':')
+            fo.write(v)
+            fo.write('/n')
+        fo.close()
     elif sel=='2': # 列出英文單字
-        for key, value in d.items():
-            print(key, value)
+        if not os.path.isfile('Thedictionary.txt'):
+            print('目前字典是空的')
+        else:
+            fo = open('Thedictionary.txt','r')
+            foc = fo.read()
+            print(foc)
     elif sel=='3': # 英翻中
         Voc = input('輸入想要翻譯的英文單字:')
         print(d[Voc])
@@ -61,6 +73,4 @@ while True:
     elif sel=='6':
             break
     else:
-        print('wrong input')''')
-
-file.close()
+        print('wrong input')
